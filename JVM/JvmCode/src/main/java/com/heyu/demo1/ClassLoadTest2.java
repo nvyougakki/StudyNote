@@ -15,7 +15,11 @@ import java.io.InputStream;
  */
 public class ClassLoadTest2 {
 
-    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    public void printTest(Class<?> clazz){
+        System.out.println(clazz.getClassLoader());
+    }
+
+    public static void main(String[] args) throws Exception {
         ClassLoader classLoader = new ClassLoader() {
             @Override
             public Class<?> loadClass(String name) throws ClassNotFoundException {
@@ -37,12 +41,15 @@ public class ClassLoadTest2 {
         };
 
         Class<?> clazz = classLoader.loadClass("com.heyu.demo1.ClassLoadTest2");
+        Class<?> clazz1 = classLoader.loadClass("com.heyu.demo1.MyChild4");
         Object obj = clazz.newInstance();
+        clazz.getMethod("printTest").invoke(obj, new Object[]{MyChild4.class});
         System.out.println(obj.getClass());
         System.out.println(obj instanceof com.heyu.demo1.ClassLoadTest2);
         System.out.println(obj.getClass().getClassLoader());
         System.out.println(com.heyu.demo1.ClassLoadTest2.class.getClassLoader());
 
     }
+
 
 }
