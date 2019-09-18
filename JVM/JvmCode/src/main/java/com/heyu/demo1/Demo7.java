@@ -16,7 +16,6 @@ public class Demo7 {
 
         System.out.println(personClazz.getClassLoader());
         System.out.println(clazz.getClassLoader());
-        personClazz.newInstance();
 
         clazz.newInstance();
 
@@ -27,7 +26,7 @@ public class Demo7 {
         //personClazz = null;
         //System.gc();
 
-        //personClazz.newInstance();
+        personClazz.newInstance();
 
     }
 
