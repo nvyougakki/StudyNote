@@ -1,0 +1,69 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.20.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'war'
+}
+
+group = 'com.uniware'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+
+//mybatisGenerator {
+//    verbose = true
+//    configFile = 'src/main/resources/generatorConfig.xml'
+//}
+
+configurations {
+//    mybatisGenerator
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    compileOnly 'org.projectlombok:lombok'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    runtimeOnly 'mysql:mysql-connector-java'
+
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+    //是配置简单化
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
+
+    //热部署
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    //mybatis
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.0'
+//    implementation 'com.baomidou:mybatis-plus:2.3'
+    implementation 'com.alibaba:druid-spring-boot-starter:1.1.13'
+
+
+}
