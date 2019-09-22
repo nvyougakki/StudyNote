@@ -1,7 +1,7 @@
 package com.uniware.config;
 
 import com.uniware.util.AESCode;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 /**
  * @ClassName NvyougakkiPasswordEncoder
@@ -9,18 +9,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @Author heyu
  * @Date 2019/9/20 16:03
  */
-public class NvyougakkiPasswordEncoder implements PasswordEncoder {
+@Component
+public class NvyougakkiPasswordEncoder {
 
     private final String password_encode_key = "nvyougakkipasswd";
 
 
-    @Override
     public String encode(CharSequence rawPassword) {
         return AESCode.encrypt((String) rawPassword, password_encode_key);
     }
 
-    @Override
     public boolean matches(CharSequence rawPassword, String encodedPassword) {
         return AESCode.encrypt((String)rawPassword).equals(encodedPassword);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new NvyougakkiPasswordEncoder().encode("admin"));
     }
 }

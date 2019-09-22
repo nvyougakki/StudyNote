@@ -43,7 +43,13 @@ mybatis:
 pagehelper:
   helper-dialect: mysql
 
-
+jwt:
+  tokenHeader: Authorization
+  tokenPrefix: Bearer
+  secret: nvyougakki
+  expiration: 3600
+  rememberExpiration: 604800
+  permitAll: ['index', 'login']
 
 ---
 
@@ -51,6 +57,6 @@ spring:
   profiles: dev
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/camp?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=UTC
+      url: jdbc:mysql://localhost:3306/nvyougakki?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=UTC
       password: 123456
       username: root
