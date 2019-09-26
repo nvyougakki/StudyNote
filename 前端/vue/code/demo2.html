@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>登录</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+
+    <body>
+		<div id="app">
+            <span :id="message">
+                悬停显示
+            </span>
+
+            <div v-text="htmlMsg"></div>
+            <div v-html="htmlMsg"></div>
+
+            <button :disabled="isDisabled">按钮</button>
+
+            <p v-if="ifSeen">看得到吗</p>
+
+            <p v-text="message"></p>
+            <p v-text="reversedMessage"></p>
+            <p v-text="reversedMessage1()"></p>
+       
+        </div>
+            
+        <script type="text/javascript">
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message:  '页面加载于 ' + new Date().toLocaleString(),
+                    htmlMsg: '<h1 style="coloe:red;">htmlMsg</h1>',
+                    isDisabled: true,
+                    ifSeen: false
+                },
+                methods: {
+                    reversedMessage1: function(){
+                        return this.message.split('').reverse().join('')
+                    }
+                },
+                computed: {
+                    reversedMessage: function(){
+                        return this.message.split('').reverse().join('')
+                    }
+                }
+            })
+        </script>
+
+
+    </body>
+
+</html>
