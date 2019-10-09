@@ -20,3 +20,9 @@
 
 -XX:SurvivorRatio=8  Eden区与Survivor区的大小比值
 
+
+
+-verbose:gc  打印垃圾收集参数
+
+-XX:+PrintGCDetails  
+
