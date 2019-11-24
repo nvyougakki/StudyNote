@@ -1,4 +1,4 @@
-package com.heyu.demo1;
+package com.heyu.jvm.demo1;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

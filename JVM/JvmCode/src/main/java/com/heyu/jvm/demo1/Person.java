@@ -1,9 +1,9 @@
-package com.heyu.demo1;
+package com.heyu.jvm.demo1;
 
 /**
  * @ClassName Person
  * @Description TODO
- * @Author Å®ÓÑGakki
+ * @Author Å®ï¿½ï¿½Gakki
  * @Date 2019/9/15 20:51
  */
 public class Person {

@@ -1,11 +1,11 @@
-package com.heyu.demo1;
+package com.heyu.jvm.demo1;
 
 import java.io.*;
 
 /**
  * @ClassName ClassLoaderTest3
  * @Description TODO
- * @Author Å®ÓÑGakki
+ * @Author Å®ï¿½ï¿½Gakki
  * @Date 2019/9/15 14:39
  */
 public class ClassLoaderTest3 extends ClassLoader {
@@ -74,12 +74,12 @@ public class ClassLoaderTest3 extends ClassLoader {
         ClassLoaderTest3 myClassLoader = new ClassLoaderTest3("my class loader");
         myClassLoader.setPath("E:\\");
 
-        Class<?> clazz = myClassLoader.loadClass("com.heyu.demo1.demo1");
+        Class<?> clazz = myClassLoader.loadClass("com.heyu.jvm.demo1.demo1");
 
         ClassLoaderTest3 myClassLoader2 = new ClassLoaderTest3(myClassLoader, "my class loader2");
         myClassLoader2.setPath("E:\\");
 
-        Class<?> clazz2 = myClassLoader2.loadClass("com.heyu.demo1.demo1");
+        Class<?> clazz2 = myClassLoader2.loadClass("com.heyu.jvm.demo1.demo1");
 
         Object obj1 = clazz.newInstance();
 

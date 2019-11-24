@@ -1,14 +1,14 @@
-package com.heyu.demo1;
+package com.heyu.jvm.demo1;
 
 /**
  * @ClassName demo2
  * @Description TODO
- * @Author 女友Gakki
+ * @Author 女锟斤拷Gakki
  * @Date 2019/9/14 11:19
  */
-//Test3不初始化
-//因为此时i是编译期常量，编译后Test.i的值直接进入Demo3的常量池
-//查看Demo3反编译指令码
+//Test3锟斤拷锟斤拷始锟斤拷
+//锟斤拷为锟斤拷时i锟角憋拷锟斤拷锟节筹拷锟斤拷锟斤拷锟斤拷锟斤拷锟絋est.i锟斤拷值直锟接斤拷锟斤拷Demo3锟侥筹拷锟斤拷锟斤拷
+//锟介看Demo3锟斤拷锟斤拷锟斤拷指锟斤拷锟斤拷
 //iconst_1
 public class Demo3 {
 

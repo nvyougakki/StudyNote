@@ -1,16 +1,16 @@
-package com.heyu.demo1;
+package com.heyu.jvm.demo1;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Í¬Ò»¸öÀà±»²»Í¬Àà¼ÓÔØÆ÷¼ÓÔØ£¬ÊµÀýºóinstanceof·µ»Øfalse
- * ²¢ÇÒ´òÓ¡µÄÀà¼ÓÔØÆ÷Ò²²»Ò»Ñù
- * Ê¹ÓÃ-XX:+TraceClassLoading¼à¿ØÀàµÄ¼ÓÔØ£¬Àà±»¼ÓÔØÁ½´Î
+ * Í¬Ò»ï¿½ï¿½ï¿½à±»ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½Êµï¿½ï¿½ï¿½ï¿½instanceofï¿½ï¿½ï¿½ï¿½false
+ * ï¿½ï¿½ï¿½Ò´ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Ò»ï¿½ï¿½
+ * Ê¹ï¿½ï¿½-XX:+TraceClassLoadingï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ø£ï¿½ï¿½à±»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
  * @ClassName ClassLoadTest2
  * @Description TODO
- * @Author Å®ÓÑGakki
+ * @Author Å®ï¿½ï¿½Gakki
  * @Date 2019/9/14 23:49
  */
 public class ClassLoadTest2 {
@@ -40,14 +40,14 @@ public class ClassLoadTest2 {
 
         };
 
-        Class<?> clazz = classLoader.loadClass("com.heyu.demo1.ClassLoadTest2");
-        Class<?> clazz1 = classLoader.loadClass("com.heyu.demo1.MyChild4");
+        Class<?> clazz = classLoader.loadClass("com.heyu.jvm.demo1.ClassLoadTest2");
+        Class<?> clazz1 = classLoader.loadClass("com.heyu.jvm.demo1.MyChild4");
         Object obj = clazz.newInstance();
         clazz.getMethod("printTest").invoke(obj, new Object[]{MyChild4.class});
         System.out.println(obj.getClass());
-        System.out.println(obj instanceof com.heyu.demo1.ClassLoadTest2);
+        System.out.println(obj instanceof ClassLoadTest2);
         System.out.println(obj.getClass().getClassLoader());
-        System.out.println(com.heyu.demo1.ClassLoadTest2.class.getClassLoader());
+        System.out.println(ClassLoadTest2.class.getClassLoader());
 
     }
 

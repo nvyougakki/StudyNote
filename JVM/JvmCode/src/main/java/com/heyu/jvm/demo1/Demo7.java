@@ -1,9 +1,9 @@
-package com.heyu.demo1;
+package com.heyu.jvm.demo1;
 
 /**
  * @ClassName Demo7
  * @Description TODO
- * @Author Å®ÓÑGakki
+ * @Author Å®ï¿½ï¿½Gakki
  * @Date 2019/9/15 20:52
  */
 public class Demo7 {
@@ -11,8 +11,8 @@ public class Demo7 {
     public static void main(String[] args) throws Exception{
         ClassLoaderTest3 myClassLoader1 = new ClassLoaderTest3("classload1");
         myClassLoader1.setPath("E:\\");
-        Class<?> personClazz = myClassLoader1.loadClass("com.heyu.demo1.Person");
-        Class<?> clazz = myClassLoader1.loadClass("com.heyu.demo1.Dog");
+        Class<?> personClazz = myClassLoader1.loadClass("com.heyu.jvm.demo1.Person");
+        Class<?> clazz = myClassLoader1.loadClass("com.heyu.jvm.demo1.Dog");
 
         System.out.println(personClazz.getClassLoader());
         System.out.println(clazz.getClassLoader());

@@ -1,14 +1,14 @@
-package com.heyu.demo1;
+package com.heyu.jvm.demo1;
 
 /**
  * @ClassName demo2
  * @Description TODO
- * @Author Å®ÓÑGakki
+ * @Author Å®ï¿½ï¿½Gakki
  * @Date 2019/9/14 11:19
  */
 /* *
- * Ö»½øÐÐ¸¸ÀàµÄ³õÊ¼»¯
- * ÒòÎª
+ * Ö»ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½Ä³ï¿½Ê¼ï¿½ï¿½
+ * ï¿½ï¿½Îª
  **/
 public class Demo4 {
 
