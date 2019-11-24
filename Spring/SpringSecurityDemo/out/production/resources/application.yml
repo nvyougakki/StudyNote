@@ -1,0 +1,62 @@
+
+spring:
+
+  datasource:
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+  #jpa配置
+  jpa:
+      properties:
+        hibernate:
+          dialect: 'org.hibernate.dialect.MySQL5InnoDBDialect'
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+  resources:
+      static-locations: ['classpath:/static/']
+  mvc:
+    static-path-pattern: /static/**
+
+#thymeleaf start
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    content-type: text/html
+    encoding: UTF-8
+    cache: false
+    enabled: true
+
+
+  profiles:
+    active: dev
+  jackson:
+      data-format: yyyy-MM-dd HH:mm:ss
+      time-zone: GMT+8
+server:
+  port: 9001
+  context-path: /camp
+mybatis:
+  type-aliases-package: com.uniware.bean
+  mapper-locations: classpath:/mapper/*.xml
+
+pagehelper:
+  helper-dialect: mysql
+
+jwt:
+  tokenHeader: Authorization
+  tokenPrefix: Bearer
+  secret: nvyougakki
+  expiration: 3600
+  rememberExpiration: 604800
+  permitAll: ['index', 'login']
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/nvyougakki?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=UTC
+      password: 123456
+      username: root
