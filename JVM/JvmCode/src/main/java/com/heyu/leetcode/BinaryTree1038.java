@@ -35,24 +35,6 @@ public class BinaryTree1038 {
 
     }
 
-    public TreeNode bstToGst(TreeNode root) {
-        bstToGst(root,0);
-        return root;
-
-    }
-
-    public void bstToGst(TreeNode root, int flag){
-        if(root == null)
-            return;
-        if(root.right != null) {
-            bstToGst(root.right, flag);
-        }
-        root.val += flag;
-        flag = root.val;
-        if(root.left != null) {
-            bstToGst(root.left, flag);
-        }
-    }
 
 }
 
