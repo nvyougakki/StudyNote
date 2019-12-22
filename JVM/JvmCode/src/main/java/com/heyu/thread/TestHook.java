@@ -7,4 +7,13 @@ package com.heyu.thread;
  * @Date 2019/12/10 21:35
  */
 public class TestHook {
+
+    public static void main(String[] args) {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+
+        }));
+
+        
+    }
+
 }

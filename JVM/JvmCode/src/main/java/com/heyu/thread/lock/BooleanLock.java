@@ -21,14 +21,11 @@ public class BooleanLock implements Lock {
     @Override
     public synchronized void lock() throws InterruptedException {
         while (lockValue) {
-            if(!waitThreads.contains(Thread.currentThread()))
-                waitThreads.add(Thread.currentThread());
-            System.out.println(Thread.currentThread().getName() + " wait");
+//            if(!waitThreads.contains(Thread.currentThread()))
+            waitThreads.add(Thread.currentThread());
             this.wait();
-            System.out.println(Thread.currentThread().getName() + "  awake");
         }
         lockValue = true;
-        System.out.println(Thread.currentThread().getName() + " get lock");
         waitThreads.remove(Thread.currentThread());
         currLockThread = Thread.currentThread();
 
@@ -36,6 +33,16 @@ public class BooleanLock implements Lock {
 
     @Override
     public synchronized void lock(long times) throws InterruptedException, TimeoutException {
+        if(times <= 0) lock();
+        long startTime = System.currentTimeMillis();
+        long waitTime = 0;
+        while (lockValue) {
+            if(waitTime > times)
+                throw new TimeoutException("超时了");
+            waitThreads.add(Thread.currentThread());
+            wait(times);
+            waitTime = System.currentTimeMillis() - startTime;
+        }
 
     }
 
@@ -44,7 +51,7 @@ public class BooleanLock implements Lock {
         if(Thread.currentThread() == currLockThread) {
             System.out.println(Thread.currentThread().getName() + " unlock");
             this.lockValue = false;
-            this.notifyAll();
+            this.notify();
         }
 
     }
