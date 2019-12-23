@@ -76,7 +76,6 @@ public class TestJoin {
 class PicIndex {
 
 //    ConcurrentHashMap
-
     private int minX;
 
     private int maxX;
