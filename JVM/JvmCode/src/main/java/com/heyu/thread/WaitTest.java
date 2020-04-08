@@ -1,5 +1,9 @@
 package com.heyu.thread;
 
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.LongAdder;
+
 public class WaitTest {
 
     private static final Object LOCK = new Object();
@@ -25,6 +29,8 @@ public class WaitTest {
         synchronized (LOCK){
             LOCK.notify();
         }
+        Random random = new Random();
+        random.nextInt(5);
 
 
 
