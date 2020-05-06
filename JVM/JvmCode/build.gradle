@@ -8,9 +8,34 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
+    mavenLocal()
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
     mavenCentral()
 }
 
 dependencies {
-    compile 'mysql:mysql-connector-java:5.1.6'
+    compile (
+            "mysql:mysql-connector-java:5.1.6",
+            "io.netty:netty-all:4.1.10.Final",
+
+            // 解析pdf
+            "org.apache.pdfbox:pdfbox:2.0.19",
+            //"e-iceblue:spire.pdf.free:2.2.0",
+
+            //识别图片的文字
+            //'net.sourceforge.tess4j:tess4j:3.2.1',
+            'com.baidu.aip:java-sdk:4.12.0',
+            //'com.alibaba:fastjson:1.2.68',
+            'com.google.code.gson:gson:2.8.6',
+            'commons-io:commons-io:2.6'
+    )
+    // https://mvnrepository.com/artifact/com.asprise.imaging/java-scanner-access-twain
+    compile group: 'com.asprise.imaging', name: 'java-scanner-access-twain', version: '12.0.20.2'
+
+    compile group: 'com.asprise.ocr',
+            name: 'java-ocr-api', version: '[15,)'
+
+    compile fileTree(dir:'libs',include:['*.jar'])
 }
