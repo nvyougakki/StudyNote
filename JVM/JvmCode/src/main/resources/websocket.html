@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket</title>
+</head>
+<body>
+<div id="app">
+    <textarea style="width: 400px; height: 200px" v-model="clientInput"></textarea>
+    <button type="button" @click="sendMsg">提交</button>
+
+    <h3>服务器输出：</h3>
+    <textarea style="width: 400px; height: 200px" v-model="serverResult"></textarea>
+</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+
+    var vue = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                serverResult: '',
+                clientInput: ''
+            }
+        },
+        methods: {
+            sendMsg(){
+                var that = this
+                var socket = that.socket
+                var msg = that.clientInput
+                if(msg) {
+                    socket.send(msg)
+                }
+                that.clientInput = ''
+            }
+        },
+        mounted(){
+            var that = this
+            var socket
+            if(window.WebSocket) {
+                socket = new WebSocket('ws://localhost:9999/ws')
+                that.socket = socket
+            } else {
+                alert('不支持websocket')
+            }
+            socket.onmessage = function (resp) {
+                that.serverResult = that.serverResult + "\n" + resp.data
+            }
+            socket.onopen = function () {
+                that.serverResult = '连接开启'
+            }
+            socket.onclose = function () {
+                that.serverResult = that.serverResult + '\n连接断开'
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

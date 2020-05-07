@@ -1,4 +1,4 @@
-package com.heyu.netty.demo3;
+package com.heyu.netty.demo003;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;

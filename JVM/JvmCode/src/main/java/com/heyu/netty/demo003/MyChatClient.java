@@ -1,9 +1,7 @@
-package com.heyu.netty.demo3;
+package com.heyu.netty.demo003;
 
-import com.heyu.netty.demo002.MyClientInit;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
