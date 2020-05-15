@@ -1,4 +1,8 @@
-/**/build/
-/**/out/
-/**/.idea/
+/**/build/**
+/**/out/**
+/**/.idea/**
 /JVM/JvmCode/out/
+/JVM/JvmCode/build/
+/JVM/JvmCode/.gradle/
+/JVM/JvmCode/gradle/
+/JVM/JvmCode/gradlew*/

@@ -12,6 +12,9 @@ repositories {
     maven {
         url 'http://maven.aliyun.com/nexus/content/groups/public/'
     }
+    maven {
+        url 'https://repo.spring.io/release/'
+    }
     mavenCentral()
 }
 
@@ -32,7 +35,8 @@ dependencies {
             'commons-io:commons-io:2.6',
 
             'com.google.protobuf:protobuf-java:3.11.0',
-            'com.google.protobuf:protobuf-java-util:3.11.0'
+            'com.google.protobuf:protobuf-java-util:3.11.0',
+            'org.springframework:spring-context:4.3.27.RELEASE'
     )
     // https://mvnrepository.com/artifact/com.asprise.imaging/java-scanner-access-twain
     compile group: 'com.asprise.imaging', name: 'java-scanner-access-twain', version: '12.0.20.2'
