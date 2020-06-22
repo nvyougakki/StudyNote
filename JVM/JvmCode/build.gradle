@@ -21,7 +21,7 @@ repositories {
 dependencies {
     compile (
             "mysql:mysql-connector-java:5.1.6",
-            "io.netty:netty-all:4.1.10.Final",
+            "io.netty:netty-all:4.1.15.Final",
 
             // 解析pdf
             "org.apache.pdfbox:pdfbox:2.0.19",
@@ -38,6 +38,10 @@ dependencies {
             'com.google.protobuf:protobuf-java-util:3.11.0',
             'org.springframework:spring-context:4.3.27.RELEASE'
     )
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+
+    implementation 'com.alibaba:easyexcel:2.2.3'
     // https://mvnrepository.com/artifact/com.asprise.imaging/java-scanner-access-twain
     compile group: 'com.asprise.imaging', name: 'java-scanner-access-twain', version: '12.0.20.2'
 
