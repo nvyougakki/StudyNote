@@ -17,11 +17,16 @@ public class TestListener extends AnalysisEventListener<TestBean> {
     //当前户主
     private String currKey;
 
+    private int index = 1;
+
+    List<String> names = new ArrayList<>();
+
     @Override
     public void invoke(TestBean data, AnalysisContext context) {
 
-        if(data.getE().equals("户主")) {
-            currKey = data.getB();
+        if(data.getF().equals("户主")) {
+            currKey = index++ + "_" + data.getC();
+            names.add(currKey);
             family.put(currKey, new ArrayList<>());
         }
         family.get(currKey).add(data);
