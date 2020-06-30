@@ -18,7 +18,7 @@ import java.util.*;
 @Data
 public class TestBean {
 
-    @ExcelProperty(value = "–Ú∫≈")
+    @ExcelProperty(value = "Â∫èÂè∑")
     private Integer a;
     @ExcelProperty(index = 1)
     private String b;
@@ -280,13 +280,6 @@ public class TestBean {
     @ExcelProperty(index = 117)
     private double dn;
 
-
-
-
-
-
-
-
     @ExcelProperty(index = 121)
     private double dr;
 
@@ -311,7 +304,7 @@ public class TestBean {
     @ExcelProperty(index = 128)
     private double dy;
 
-    private static String icon = "°Ã";
+    private static String icon = "‚àö";
     public static final List<String> demoResFileName = Arrays.asList("E:\\workspace\\yk\\demo_res.xlsx", "E:\\workspace\\yk\\demo_res_1.xlsx");
     public static String demoFileName = "E:\\workspace\\yk\\demo.xls";
     private static void copySheet(List<String> set){
@@ -350,26 +343,26 @@ public class TestBean {
                 data.put("name", key.split("_")[1]);
                 List<TestBean> testBeans = family.get(key);
 
-                //µ⁄“ª––
+                //Á¨¨‰∏ÄË°å
                 boolean ifG = false;
                 int gCount = 0;
 
-                //µ⁄∂˛–– hijk
+                //Á¨¨‰∫åË°å hijk
                 int _22014 = 0,_22015 = 0,_22016 = 0,_22017 = 0,_22018 = 0,_22019 = 0,_22020 = 0;
-                //µ⁄4––
+                //Á¨¨4Ë°å
                 double fh2018 = 0;
                 double fh2019 = 0;
 
-                //µ⁄6––
+                //Á¨¨6Ë°å
                 //Map<String, String> sixMap = new HashMap<>();
 
 
-                //µ⁄8––
+                //Á¨¨8Ë°å
                 int dk2018 = 0;
                 int dk2019 = 0;
                 int dk2020 = 0;
 
-                //µ⁄9––
+                //Á¨¨9Ë°å
                 double ncbx2014 = 0;
                 double ncbx2015 = 0;
                 double ncbx2016 = 0;
@@ -422,9 +415,9 @@ public class TestBean {
 
 
                 for(TestBean testBean: testBeans) {
-                    if(testBean.getF().equals("ªß÷˜")) {
+                    if(testBean.getF().equals("Êà∑‰∏ª")) {
                         String b = testBean.getB();
-                        data.put("group", b.substring(b.indexOf("¥Â") + 1, b.length() - 1));
+                        data.put("group", b.substring(b.indexOf("Êùë") + 1, b.length() - 1));
                         data.put("jdYear", testBean.getG());
                         data.put("tpYear", testBean.getH());
                         data.put("fzr", testBean.getI());
@@ -436,11 +429,11 @@ public class TestBean {
                             data.put("pdjg2019", testBean.getAu());
                         }
                     }
-                    //µ⁄“ª––
+                    //Á¨¨‰∏ÄË°å
                     if(testBean.getL() != null) {
                         gCount += testBean.getL();
                     }
-                    //µ⁄∂˛––
+                    //Á¨¨‰∫åË°å
                     _22018 += (testBean.getR() + testBean.getS());
                     _22019 += (testBean.getU() + testBean.getV() + testBean.getW() + testBean.getX());
                     if(testBean.getR() > 0 || testBean.getW() > 0 ) {
@@ -492,7 +485,7 @@ public class TestBean {
 
 
 //
-//                //µ⁄4––
+//                //Á¨¨4Ë°å
                     Double m = testBean.getY();
                     Double l = testBean.getZ();
                     if(m != null || l != null) {
@@ -500,7 +493,7 @@ public class TestBean {
                         if(m != null && m > 0) fh2018 += m;
                     }
 //
-                    //µ⁄6––
+                    //Á¨¨6Ë°å
                     String u = testBean.getAg();
                     if(!StringUtils.isEmpty(u)) {
                         data.put("jsIcon", icon);
@@ -520,7 +513,7 @@ public class TestBean {
 
                     }
 //
-//                //µ⁄8––
+//                //Á¨¨8Ë°å
 //                Integer v = testBean.getV();
 //                Integer w = testBean.getW();
 //                Integer x = testBean.getX();
@@ -537,7 +530,7 @@ public class TestBean {
                         data.put("dk" + testBean.getAi(), Integer.parseInt(data.get("dk" + testBean.getAi()).toString()) + ah);
                     }
 //
-//                //µ⁄9¡–
+//                //Á¨¨9Âàó
 //                Double y = testBean.getY();
 //                Double z = testBean.getZ();
 //                if(y != null) ncbx2018 += y;
@@ -697,7 +690,7 @@ public class TestBean {
             double yzyCount = yzy2017 + yzy2018 + yzy2019 + yzy2020;
             if(yzyCount > 0)
                 data.put("yzyCount", (int)Math.round(yzyCount));*/
-                //µ⁄Àƒ––
+                //Á¨¨ÂõõË°å
                 if(fh2018 > 0) {
                     data.put("fhIcon",icon);
                     data.put("hzsddIcon",icon);
@@ -712,7 +705,7 @@ public class TestBean {
                 if(fhCount > 0)
                     data.put("fhCount", (int)Math.round(fhCount));
 
-                //µ⁄6––
+                //Á¨¨6Ë°å
 
 //            if(dk2018 > 0) {
 //                data.put("dkIcon", icon);
@@ -727,19 +720,19 @@ public class TestBean {
 //                data.put("dk2020", dk2020);
 //            }
 
-                //µ⁄æ≈––
+                //Á¨¨‰πùË°å
                 if(ncbx2018 > 0) {
                     data.put("ncbxIcon", icon);
-                    data.put("ncbx2018", ncbx2018 + "∆ªπ˚");
+                    data.put("ncbx2018", ncbx2018 + "ËãπÊûú");
                 }
                 if(ncbx2019 > 0) {
                     data.put("ncbxIcon", icon);
-                    data.put("ncbx2019", ncbx2019 + "∆ªπ˚");
-                    data.put("ncbx2020", ncbx2019 + "∆ªπ˚");
+                    data.put("ncbx2019", ncbx2019 + "ËãπÊûú");
+                    data.put("ncbx2020", ncbx2019 + "ËãπÊûú");
                 }
 
 
-                //µ⁄11––
+                //Á¨¨11Ë°å
 
                 if(jgyx2015 > 0) {
                     data.put("jgyxIcon", icon);
@@ -934,8 +927,8 @@ public class TestBean {
     public static Map<String, String> getRes(String s){
         if(s == null) return null;
         String[] split = null;
-        if(s.indexOf("£®") >= 0)
-            split  = s.split("£®");
+        if(s.indexOf("Ôºà") >= 0)
+            split  = s.split("Ôºà");
         else
             split = s.split("\\(");
         Map<String, String> result = new HashMap<>();
@@ -946,13 +939,13 @@ public class TestBean {
 
     public static void putData(Map data, String type) {
         String key = "";
-        if(type.equals("≈£")) {
+        if(type.equals("Áâõ")) {
             key = "niuIcon";
-        } else if(type.equals("—Ú")) {
+        } else if(type.equals("Áæä")) {
             key = "yangIcon";
-        } else if(type.equals("÷Ì")) {
+        } else if(type.equals("Áå™")) {
             key = "zhuIcon";
-        } else if(type.equals("º¶")) {
+        } else if(type.equals("È∏°")) {
             key = "jiIcon";
         }
         data.put(key, icon);

@@ -14,7 +14,7 @@ public class TestListener extends AnalysisEventListener<TestBean> {
 
     private Map<String, List<TestBean>> family = new HashMap<>();
 
-    //当前户主
+    //褰撳墠鎴蜂富
     private String currKey;
 
     private int index = 1;
@@ -24,7 +24,7 @@ public class TestListener extends AnalysisEventListener<TestBean> {
     @Override
     public void invoke(TestBean data, AnalysisContext context) {
 
-        if(data.getF().equals("户主")) {
+        if(data.getF().equals("鎴蜂富")) {
             currKey = index++ + "_" + data.getC();
             names.add(currKey);
             family.put(currKey, new ArrayList<>());
