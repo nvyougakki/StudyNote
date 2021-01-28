@@ -1,6 +1,10 @@
 plugins {
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
+    id 'war'
 }
+
 
 group 'com.heyu'
 version '1.0-SNAPSHOT'
@@ -18,9 +22,12 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    luceneVersion = '5.5.0'
+}
+
 dependencies {
     compile (
-            "mysql:mysql-connector-java:5.1.6",
             "io.netty:netty-all:4.1.15.Final",
 
             // 解析pdf
@@ -36,10 +43,22 @@ dependencies {
 
             'com.google.protobuf:protobuf-java:3.11.0',
             'com.google.protobuf:protobuf-java-util:3.11.0',
-            'org.springframework:spring-context:4.3.27.RELEASE'
+            'org.springframework:spring-context:4.3.27.RELEASE',
+            "org.apache.lucene:lucene-core:${luceneVersion}",
+            "org.apache.lucene:lucene-analyzers-smartcn:${luceneVersion}",
+            "org.apache.lucene:lucene-queryparser:${luceneVersion}",
+            "org.apache.lucene:lucene-analyzers-common:${luceneVersion}"
     )
+    implementation 'org.springframework.boot:spring-boot-starter'
+    runtimeOnly 'mysql:mysql-connector-java'
+    compile 'com.baomidou:mybatis-plus:3.4.2'
+
+
     compileOnly 'org.projectlombok:lombok:1.18.10'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
+
+    compile 'net.sourceforge.tess4j:tess4j:3.2.1'
+//    compile 'com.asprise.ocr:java-ocr-api:15.3.0.3'
 
     implementation 'com.alibaba:easyexcel:2.2.3'
     // https://mvnrepository.com/artifact/com.asprise.imaging/java-scanner-access-twain
@@ -49,4 +68,17 @@ dependencies {
             name: 'java-ocr-api', version: '[15,)'
 
     compile fileTree(dir:'libs',include:['*.jar'])
+
+    // https://mvnrepository.com/artifact/junit/junit
+    testCompile group: 'junit', name: 'junit', version: '4.13.1'
+
+
+    compile 'com.baidu.aip:java-sdk:4.15.1'
+
+    implementation 'com.alibaba:druid-spring-boot-starter:1.1.13'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
 }
