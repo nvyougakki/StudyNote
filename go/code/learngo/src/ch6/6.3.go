@@ -28,6 +28,20 @@ func main () {
 	q.ScaleBy(2)
 
 	fmt.Println(p.Distance(q.Point))
+	var c ByteCounter
+	c.Write([]byte("hello"))
+	fmt.Println(c)
 
+	c = 0
+	name := "Dolly"
+	fmt.Fprintf(&c, "hello, %s", name)
+	fmt.Println(c)
 
+}
+
+type ByteCounter int
+
+func (self *ByteCounter) Write(p []byte) (int, error) {
+	*self += ByteCounter(len(p))
+	return len(p), nil
 }

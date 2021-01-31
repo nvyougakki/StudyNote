@@ -35,8 +35,8 @@ func (self *reader) readLuaNumber() float64 {
 	return math.Float64frombits(self.readUint64())
 }
 
-func (self *reader) readString() string{
-	size := uint(self.readByte())  //短字符串
+func (self *reader) readString() string {
+	size := uint(self.readByte()) //短字符串
 	if size == 0 {
 		return ""
 	}
@@ -54,5 +54,131 @@ func (self *reader) readBytes(n uint) []byte {
 }
 
 func (self *reader) checkHeader() {
+	if string(self.readBytes(4)) != LUA_SIGNATURE {
+		panic("not a precompiled chunk!")
+	} else if self.readByte() != LUAC_VERSION {
+		panic("version mismatch")
+	} else if self.readByte() != LUAC_FORMAT {
+		panic("format mismatch")
+	} else if string(self.readBytes(6)) != LUAC_DATA {
+		panic("corrupted")
+	} else if self.readByte() != CINT_DATA {
+		panic("int size mismatch")
+	} else if self.readByte() != CSZIET_SIZE {
+		panic("size_z size mismatch")
+	} else if self.readByte() != INSTRUCTION_SIZE {
+		panic("instruction size mismatch")
+	} else if self.readByte() != LUA_INTEGER_SIZE {
+		panic("lua_Integet size mismatch")
+	} else if self.readByte() != LUA_NUMBER_SIZE {
+		panic("lua_Number size mismatch")
+	} else if self.readLuaInteger() != LUAC_INT {
+		panic("endianness mismatch")
+	} else if self.readLuaNumber() != LUAC_NUM {
+		panic("float format mismatch")
+	}
+}
 
+func (self *reader) readProto(parentSource string) *Prototype {
+	source := self.readString()
+	if source == "" {
+		source = parentSource
+	}
+	return &Prototype{
+		Source:          source,
+		LineDefined:     self.readUint32(),
+		LastLineDefined: self.readUint32(),
+		NumParams:       self.readByte(),
+		IsVararg:        self.readByte(),
+		MaxStackSize:    self.readByte(),
+		Code:            self.readCode(),
+		Constants:       self.readConstants(),
+		Upvalues:        self.readUpvalues(),
+		Protos:          self.readProtos(source),
+		LineInfo:        self.readLineInfo(),
+		LocVars:         self.readLocVars(),
+		UpvalueNames:    self.readUpvalueNames(),
+	}
+}
+
+func (self *reader) readCode() []uint32 {
+	codes := make([]uint32, self.readUint32())
+	for i := range codes {
+		codes[i] = self.readUint32()
+	}
+	return codes
+}
+
+func (self *reader) readConstants() []interface{} {
+	constants := make([]interface{}, self.readUint32())
+	for i := range constants {
+		constants[i] = self.readConstant()
+	}
+	return constants
+}
+
+func (self *reader) readConstant() interface{} {
+	switch self.readByte() {
+	case TAG_NIL:
+		return nil
+	case TAG_BOOLEAN:
+		return self.readByte() != 0
+	case TAG_INTEGER:
+		return self.readLuaInteger()
+	case TAG_NUMBER:
+		return self.readLuaNumber()
+	case TAG_SHORT_STR:
+		return self.readString()
+	case TAG_LONG_STR:
+		return self.readString()
+	default:
+		panic("corrupted!")
+	}
+}
+
+func (self *reader) readUpvalues() []Upvalue {
+	upvalues := make([]Upvalue, self.readUint32())
+	for i := range upvalues {
+		upvalues[i] = Upvalue{
+			Instack: self.readByte(),
+			Idx:     self.readByte(),
+		}
+	}
+	return upvalues
+}
+
+func (self *reader) readProtos(parentSource string) []*Prototype {
+	protos := make([]*Prototype, self.readUint32())
+	for i := range protos {
+		protos[i] = self.readProto(parentSource)
+	}
+	return protos
+}
+
+func (self *reader) readLineInfo() []uint32 {
+	lineInfos := make([]uint32, self.readUint32())
+	for i := range lineInfos {
+		lineInfos[i] = self.readUint32()
+	}
+	return lineInfos
+}
+
+func (self *reader) readLocVars() []LocVar {
+	localVars := make([]LocVar, self.readUint32())
+	for i := range localVars {
+		localVars[i] = LocVar{
+			VarName: self.readString(),
+			StartPc: self.readUint32(),
+			EndPc:   self.readUint32(),
+		}
+	}
+	return localVars
+}
+
+func (self *reader) readUpvalueNames() []string {
+	upvalueNames := make([]string, self.readUint32())
+	for i := range upvalueNames {
+		upvalueNames[i] = self.readString()
+	}
+	return upvalueNames
 }

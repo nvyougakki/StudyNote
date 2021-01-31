@@ -49,7 +49,7 @@ type Prototype struct {
 	Code         []uint32      //指令表，每条指令占4个字节
 	Constants    []interface{} //常亮表，以一个字节tag开头，标识类型
 	Upvalues     []Upvalue     //Upvalue表
-	Proto        []*Prototype  //子函数原型表
+	Protos        []*Prototype  //子函数原型表
 	LineInfo     []uint32      //行号表
 	LocVars      []LocVar      //局部变量表
 	UpvalueNames []string      //Upvalue名列表
