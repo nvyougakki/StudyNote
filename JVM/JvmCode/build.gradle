@@ -19,6 +19,9 @@ repositories {
     maven {
         url 'https://repo.spring.io/release/'
     }
+    maven {
+        url 'https://jitpack.io'
+    }
     mavenCentral()
 }
 
@@ -27,6 +30,7 @@ ext {
 }
 
 dependencies {
+
     compile (
             "io.netty:netty-all:4.1.15.Final",
 
@@ -47,7 +51,11 @@ dependencies {
             "org.apache.lucene:lucene-core:${luceneVersion}",
             "org.apache.lucene:lucene-analyzers-smartcn:${luceneVersion}",
             "org.apache.lucene:lucene-queryparser:${luceneVersion}",
-            "org.apache.lucene:lucene-analyzers-common:${luceneVersion}"
+            "org.apache.lucene:lucene-analyzers-common:${luceneVersion}",
+
+            //防止反编译
+            "com.github.core-lib:xjar:4.0.0",
+            "org.apache.commons:commons-compress:1.20"
     )
     implementation 'org.springframework.boot:spring-boot-starter'
     runtimeOnly 'mysql:mysql-connector-java'
