@@ -18,6 +18,10 @@ type SiteParam struct {
 	File      string `json:"file"`
 }
 
+type AiParam struct {
+
+}
+
 func main() {
 	//siteId := "5GHZ1812210312-NRD"
 	//
@@ -27,15 +31,15 @@ func main() {
 	//defer resp.Body.Close()
 	//body, _ := ioutil.ReadAll(resp.Body)
 	//fmt.Println(string(body))
-	//fileBytes, _ := ioutil.ReadFile("C:/Users/heyu/Desktop/IMG_4298.JPG")
+	fileBytes, _ := ioutil.ReadFile("C:/Users/heyu/Desktop/IMG_4298.JPG")
 	siteParam := SiteParam{
-		"2008",
-		"5GHZ1912261730-NRD",
+		"2006",
+		"C2030463200033-1624254",
 		0,
 		1,
 		"test-pic-name",
 		"test-msg",
-		"",
+		string(fileBytes),
 	}
 	paramsByte, _ := json.Marshal(siteParam)
 	fmt.Println(string(paramsByte))

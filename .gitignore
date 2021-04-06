@@ -1,4 +1,5 @@
 /**/build/**
+/**/bin/**
 /**/out/**
 /**/.idea/**
 /JVM/JvmCode/out/
@@ -6,3 +7,6 @@
 /JVM/JvmCode/.gradle/
 /JVM/JvmCode/gradle/
 /JVM/JvmCode/gradlew*/
+/**/gradlew
+/**/gradlew.bat
+
