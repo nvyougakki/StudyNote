@@ -22,7 +22,7 @@ public class Main {
         duck.performFly();
 
         duck.setFlyBehavior(new FlyWithRocket());
-        duck.performFly(); 
+        duck.performFly();
 
 
     }
